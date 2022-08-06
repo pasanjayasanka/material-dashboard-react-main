@@ -12,6 +12,7 @@ Coded by www.creative-tim.com
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
+import React, { useEffect, useState } from "react";
 
 // @mui material components
 import Grid from "@mui/material/Grid";
@@ -31,6 +32,9 @@ import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatist
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
+import axios from "axios";
+
+const date = new Date();
 
 // Dashboard components
 // import Projects from "layouts/dashboard/components/Projects";
@@ -38,48 +42,118 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
-
+  const [activities, setactivities] = useState({});
+  const [sportActivities, setSportActivities] = useState([]);
+  const [acwr, setAcwr] = useState([]);
+  const [actlist, setActlist] = useState([]);
+  const sportSet = (activitySet, weeklyActivities) => {
+    const act = activitySet;
+    const wk1 = weeklyActivities[0];
+    const wk2 = weeklyActivities[1];
+    const actarr = act.map((activity) => ({
+      name: activity.name,
+      acwr1: [wk1[activity.id_field]][0],
+      acwr2: [wk2[activity.id_field]][0],
+    }));
+    actarr.pop();
+    setActlist(actarr);
+  };
+  const getSportActivities = () => {
+    axios
+      .get("/sport/activity/user/")
+      .then((res) => setSportActivities(res.data))
+      .catch((e) => console.log(e));
+  };
+  const getActivities = () => {
+    axios
+      .get(`/upload/merge/${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`)
+      .then((res) => {
+        setactivities(res.data);
+        console.log("activities");
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+  const getACWR = () => {
+    axios
+      .get(`/predict/week/${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`)
+      .then((res) => {
+        setAcwr(res.data);
+        console.log("acwr");
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    getActivities();
+    getACWR();
+    getSportActivities();
+  }, []);
+  useEffect(() => {
+    // const act = activities[0];
+    // const data = "data";
+    console.log("return");
+    console.log(acwr[0]);
+    console.log(sportActivities);
+  }, [acwr, sportActivities]);
+  useEffect(() => {
+    sportSet(sportActivities, acwr);
+  }, [sportActivities, acwr]);
   return (
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox py={3}>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="primary"
-                icon="timer"
-                title="Training Time"
-                count="3h 25m"
-                percentage={{
-                  color: "success",
-                  amount: "+55%",
-                  label: "than lask week",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                icon="leaderboard"
-                title="ACWR"
-                count="2,300"
-                percentage={{
-                  color: "success",
-                  amount: "+3%",
-                  label: "than last month",
-                }}
-              />
-            </MDBox>
-          </Grid>
+          {activities && (
+            <Grid item xs={12} md={6} lg={3}>
+              <MDBox mb={1.5}>
+                <ComplexStatisticsCard
+                  color="primary"
+                  icon="timer"
+                  title="Training Time"
+                  count={`${
+                    Math.round(activities.len / (33 * 6))
+                      ? Math.round(activities.len / (33 * 6))
+                      : 0
+                  } mins`}
+                  percentage={{
+                    color: "success",
+                    amount: "+55%",
+                    label: "than lask week",
+                  }}
+                />
+              </MDBox>
+            </Grid>
+          )}
+          {acwr &&
+            actlist.map((a) => (
+              <Grid item xs={12} md={6} lg={3}>
+                <MDBox mb={1.5}>
+                  <ComplexStatisticsCard
+                    icon="leaderboard"
+                    title={`${a.name} ACWR`}
+                    count={`${parseFloat(a.acwr1).toFixed(2)}`}
+                    percentage={{
+                      color: "success",
+                      amount: parseFloat(((a.acwr1 - a.acwr2) * 100) / a.acwr1)
+                        .toFixed(2)
+                        .toString(),
+                      label: "% than yesterday",
+                    }}
+                  />
+                </MDBox>
+              </Grid>
+            ))}
+
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 color="success"
                 icon="favorite"
                 title="Average Heart Rate"
-                count="95 Pulse"
+                // count="68 Pulse"
+                count={`${acwr[0][5]} Pulse`}
+                // count={`${actlist[actlist.length - 1]} Pulse`}
                 percentage={{
                   color: "success",
                   amount: "+1%",
@@ -94,7 +168,7 @@ function Dashboard() {
                 color="primary"
                 icon="local_hospital"
                 title="TRIMP Score"
-                count="1.5"
+                count="73"
                 percentage={{
                   color: "success",
                   amount: "+1%",

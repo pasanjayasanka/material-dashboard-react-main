@@ -15,5 +15,5 @@ Coded by www.creative-tim.com
 
 export default {
   labels: ["M", "T", "W", "T", "F", "S", "S"],
-  datasets: { label: "Sales", data: [50, 20, 10, 22, 50, 10, 40] },
+  datasets: { label: "Sales", data: [0.6, 0.9, 1.3, 1.5, 1.2, 1.4, 1.22] },
 };
