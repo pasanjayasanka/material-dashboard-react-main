@@ -24,15 +24,37 @@ import MDBox from "components/MDBox";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
-import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
-import ReportsPieChart from "examples/Charts/PieChart";
+// import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
+// import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
+// import ReportsPieChart from "examples/Charts/PieChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
 
 // Data
-import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
-import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
+// import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
+// import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 import axios from "axios";
+
+// const reportsBarChartDataInit = {
+//   labels: ["M", "T", "W", "T", "F", "S", "S"],
+//   datasets: { label: "Sales", data: [0.6, 0.9, 1.3, 1.5, 1.2, 1.4, 1.22] },
+// };
+// const reportsLineChartDataInit = {
+//   sales: {
+//     labels: ["M", "T", "W", "T", "F", "S", "S"],
+//     datasets: { label: "Mobile apps", data: [80, 75, 85, 90, 78, 75, 68] },
+//   },
+//   tasks: {
+//     labels: ["M", "T", "W", "T", "F", "S", "S"],
+//     datasets: { label: "Desktop apps", data: [48, 60, 75, 80, 70, 65, 70] },
+//   },
+//   pie: {
+//     icon: [],
+//     title: ["running", "primary", "secondary", "info", "success", "warning"],
+//     description: [],
+//     height: [],
+//     chart: [],
+//   },
+// };
 
 const date = new Date();
 
@@ -41,11 +63,14 @@ const date = new Date();
 // import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 
 function Dashboard() {
-  const { sales, tasks } = reportsLineChartData;
   const [activities, setactivities] = useState({});
   const [sportActivities, setSportActivities] = useState([]);
   const [acwr, setAcwr] = useState([]);
   const [actlist, setActlist] = useState([]);
+  // const [loading, setLoading] = useState(false);
+  // const [acwrloading,setAcwrloading]=useState(false)
+  // const [reportsBarChartData, setreportsBarChartData] = useState(reportsBarChartDataInit);
+  // const [reportsLineChartData, setreportsLineChartData] = useState(reportsLineChartDataInit);
   const sportSet = (activitySet, weeklyActivities) => {
     const act = activitySet;
     const wk1 = weeklyActivities[0];
@@ -59,30 +84,44 @@ function Dashboard() {
     setActlist(actarr);
   };
   const getSportActivities = () => {
+    // setLoading(true);
     axios
       .get("/sport/activity/user/")
-      .then((res) => setSportActivities(res.data))
+      .then((res) => {
+        setSportActivities(res.data);
+        // setLoading(false);
+      })
       .catch((e) => console.log(e));
   };
   const getActivities = () => {
+    // setLoading(true);
     axios
       .get(`/upload/merge/${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`)
       .then((res) => {
         setactivities(res.data);
         console.log("activities");
         console.log(res.data);
+        // setLoading(false);
       })
       .catch((err) => console.log(err));
   };
   const getACWR = () => {
+    // setAcwrloading(true);
     axios
       .get(`/predict/week/${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`)
       .then((res) => {
         setAcwr(res.data);
         console.log("acwr");
         console.log(res.data);
+        // setLoading(false);
       })
+      // .then(() => setAcwrloading(false))
       .catch((err) => console.log(err));
+  };
+  const setChartData = () => {
+    // if(acwr){
+    //
+    // }
   };
   useEffect(() => {
     getActivities();
@@ -92,9 +131,12 @@ function Dashboard() {
   useEffect(() => {
     // const act = activities[0];
     // const data = "data";
-    console.log("return");
-    console.log(acwr[0]);
+    // console.log("return");
+    // console.log(acwr[0]);
     console.log(sportActivities);
+    console.log("actlist");
+    // console.log(acwr[0][actlist.length]);
+    setChartData();
   }, [acwr, sportActivities]);
   useEffect(() => {
     sportSet(sportActivities, acwr);
@@ -145,23 +187,23 @@ function Dashboard() {
               </Grid>
             ))}
 
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="success"
-                icon="favorite"
-                title="Average Heart Rate"
-                // count="68 Pulse"
-                count={`${acwr[0][5]} Pulse`}
-                // count={`${actlist[actlist.length - 1]} Pulse`}
-                percentage={{
-                  color: "success",
-                  amount: "+1%",
-                  label: "than yesterday",
-                }}
-              />
-            </MDBox>
-          </Grid>
+          {/* {acwr && ( */}
+          {/*   <Grid item xs={12} md={6} lg={3}> */}
+          {/*     <MDBox mb={1.5}> */}
+          {/*       <ComplexStatisticsCard */}
+          {/*         color="success" */}
+          {/*         icon="favorite" */}
+          {/*         title="Average Heart Rate" */}
+          {/*         count={`${acwr[0][actlist.length]} Pulse`} */}
+          {/*         percentage={{ */}
+          {/*           color: "success", */}
+          {/*           amount: "+1%", */}
+          {/*           label: "than yesterday", */}
+          {/*         }} */}
+          {/*       /> */}
+          {/*     </MDBox> */}
+          {/*   </Grid> */}
+          {/* )} */}
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
@@ -178,60 +220,60 @@ function Dashboard() {
             </MDBox>
           </Grid>
         </Grid>
-        <MDBox mt={4.5}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={4}>
-              <MDBox mb={3}>
-                <ReportsBarChart
-                  color="info"
-                  title="ACWR value"
-                  description="Change During the week"
-                  chart={reportsBarChartData}
-                />
-              </MDBox>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <MDBox mb={3}>
-                <ReportsLineChart
-                  color="success"
-                  title="Average Heart Rate"
-                  description="Change During the week"
-                  chart={sales}
-                />
-              </MDBox>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <MDBox mb={3}>
-                <ReportsLineChart
-                  color="primary"
-                  title="TRIMP Score"
-                  description="Change During the week"
-                  chart={tasks}
-                />
-              </MDBox>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <MDBox mb={3}>
-                <ReportsPieChart
-                  color="info"
-                  title="Activity Time"
-                  description="Change During the week"
-                  chart={sales}
-                />
-              </MDBox>
-            </Grid>
-          </Grid>
-        </MDBox>
-        {/* <MDBox>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={8}>
-              <Projects />
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <OrdersOverview />
-            </Grid>
-          </Grid>
-        </MDBox> */}
+        {/*   <MDBox mt={4.5}> */}
+        {/*     <Grid container spacing={3}> */}
+        {/*       <Grid item xs={12} md={6} lg={4}> */}
+        {/*         <MDBox mb={3}> */}
+        {/*           <ReportsBarChart */}
+        {/*             color="info" */}
+        {/*             title="ACWR value" */}
+        {/*             description="Change During the week" */}
+        {/*             chart={reportsBarChartData} */}
+        {/*           /> */}
+        {/*         </MDBox> */}
+        {/*       </Grid> */}
+        {/*       <Grid item xs={12} md={6} lg={4}> */}
+        {/*         <MDBox mb={3}> */}
+        {/*           <ReportsLineChart */}
+        {/*             color="success" */}
+        {/*             title="Average Heart Rate" */}
+        {/*             description="Change During the week" */}
+        {/*             chart={reportsLineChartDataInit.sales} */}
+        {/*           /> */}
+        {/*         </MDBox> */}
+        {/*       </Grid> */}
+        {/*       <Grid item xs={12} md={6} lg={4}> */}
+        {/*         <MDBox mb={3}> */}
+        {/*           <ReportsLineChart */}
+        {/*             color="primary" */}
+        {/*             title="TRIMP Score" */}
+        {/*             description="Change During the week" */}
+        {/*             chart={reportsLineChartDataInit.tasks} */}
+        {/*           /> */}
+        {/*         </MDBox> */}
+        {/*       </Grid> */}
+        {/*       <Grid item xs={12} md={6} lg={4}> */}
+        {/*         <MDBox mb={3}> */}
+        {/*           <ReportsPieChart */}
+        {/*             color="info" */}
+        {/*             title="Activity Time" */}
+        {/*             description="Change During the week" */}
+        {/*             chart={reportsLineChartData.sales} */}
+        {/*           /> */}
+        {/*         </MDBox> */}
+        {/*       </Grid> */}
+        {/*     </Grid> */}
+        {/*   </MDBox> */}
+        {/*   /!* <MDBox> */}
+        {/*     <Grid container spacing={3}> */}
+        {/*       <Grid item xs={12} md={6} lg={8}> */}
+        {/*         <Projects /> */}
+        {/*       </Grid> */}
+        {/*       <Grid item xs={12} md={6} lg={4}> */}
+        {/*         <OrdersOverview /> */}
+        {/*       </Grid> */}
+        {/*     </Grid> */}
+        {/*   </MDBox> *!/ */}
       </MDBox>
       <Footer />
     </DashboardLayout>
