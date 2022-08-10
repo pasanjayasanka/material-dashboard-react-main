@@ -20,7 +20,7 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 
-function Device() {
+function Sport() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -29,12 +29,26 @@ function Device() {
           <Grid item xs={12} lg={8}>
             <Card>
               <MDBox p={2}>
-                <MDTypography variant="h5">Device ID Configuration</MDTypography>
+                <MDTypography variant="h5">Sport Mount Location Configuration</MDTypography>
               </MDBox>
               <MDBox pt={4} pb={3} px={3}>
                 <MDBox component="form" role="form">
                   <MDBox mb={2}>
-                    <MDInput type="text" label="Device ID" variant="standard" fullWidth />
+                    <FormControl fullWidth>
+                      <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                        Sport
+                      </InputLabel>
+                      <NativeSelect
+                        defaultValue={30}
+                        inputProps={{
+                          name: "sport",
+                          id: "uncontrolled-native",
+                        }}
+                      >
+                        <option value={10}>Cricket</option>
+                        <option value={20}>Badminton</option>
+                      </NativeSelect>
+                    </FormControl>
                   </MDBox>
                   <MDBox mb={2}>
                     <FormControl fullWidth>
@@ -55,7 +69,7 @@ function Device() {
                   </MDBox>
                   <MDBox mt={4} mb={1}>
                     <MDButton variant="gradient" color="info" fullWidth>
-                      ADD NEW DEVICE
+                      ADD NEW LOCATION TO SPORT
                     </MDButton>
                   </MDBox>
                 </MDBox>
@@ -65,33 +79,55 @@ function Device() {
           <Grid item xs={12} lg={8}>
             <Card>
               <MDBox p={2}>
-                <MDTypography variant="h5">Mount Location</MDTypography>
+                <MDTypography variant="h5">New Sport Configuration</MDTypography>
               </MDBox>
               <MDBox pt={4} pb={3} px={3}>
                 <MDBox component="form" role="form">
                   <MDBox mb={2}>
+                    <MDInput type="text" label="Sport" variant="standard" fullWidth />
+                  </MDBox>
+                  <MDBox mt={4} mb={1}>
+                    <MDButton variant="gradient" color="info" fullWidth>
+                      ADD NEW SPORT
+                    </MDButton>
+                  </MDBox>
+                </MDBox>
+              </MDBox>
+            </Card>
+          </Grid>
+          <Grid item xs={12} lg={8}>
+            <Card>
+              <MDBox p={2}>
+                <MDTypography variant="h5">New Activity Configuration</MDTypography>
+              </MDBox>
+              <MDBox pt={4} pb={3} px={3}>
+                <MDBox component="form" role="form">
+                  <MDBox mb={2}>
+                    <MDInput type="number" label="ID Field" variant="standard" fullWidth />
+                  </MDBox>
+                  <MDBox mb={2}>
+                    <MDInput type="text" label="Activity" variant="standard" fullWidth />
+                  </MDBox>
+                  <MDBox mb={2}>
                     <FormControl fullWidth>
                       <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                        Mount Location
+                        Sport
                       </InputLabel>
                       <NativeSelect
                         defaultValue={30}
                         inputProps={{
-                          name: "age",
+                          name: "sport",
                           id: "uncontrolled-native",
                         }}
                       >
-                        <option value={10}>Wrist</option>
-                        <option value={20}>Leg</option>
+                        <option value={10}>Cricket</option>
+                        <option value={20}>Badminton</option>
                       </NativeSelect>
                     </FormControl>
                   </MDBox>
-                  <MDBox mb={2}>
-                    <MDInput type="number" label="Mounting order" variant="standard" fullWidth />
-                  </MDBox>
                   <MDBox mt={4} mb={1}>
                     <MDButton variant="gradient" color="info" fullWidth>
-                      ADD NEW MOUNTING LOCATION
+                      ADD NEW ACTIVITY
                     </MDButton>
                   </MDBox>
                 </MDBox>
@@ -105,4 +141,4 @@ function Device() {
   );
 }
 
-export default Device;
+export default Sport;

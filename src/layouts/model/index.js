@@ -20,7 +20,7 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 
-function Device() {
+function Model() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -29,33 +29,19 @@ function Device() {
           <Grid item xs={12} lg={8}>
             <Card>
               <MDBox p={2}>
-                <MDTypography variant="h5">Device ID Configuration</MDTypography>
+                <MDTypography variant="h5">Add New Model</MDTypography>
               </MDBox>
               <MDBox pt={4} pb={3} px={3}>
                 <MDBox component="form" role="form">
                   <MDBox mb={2}>
-                    <MDInput type="text" label="Device ID" variant="standard" fullWidth />
+                    <MDInput type="text" label="Name" variant="standard" fullWidth />
                   </MDBox>
                   <MDBox mb={2}>
-                    <FormControl fullWidth>
-                      <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                        Mount Location
-                      </InputLabel>
-                      <NativeSelect
-                        defaultValue={30}
-                        inputProps={{
-                          name: "age",
-                          id: "uncontrolled-native",
-                        }}
-                      >
-                        <option value={10}>Wrist</option>
-                        <option value={20}>Leg</option>
-                      </NativeSelect>
-                    </FormControl>
+                    <MDInput type="text" label="Name" variant="standard" fullWidth />
                   </MDBox>
                   <MDBox mt={4} mb={1}>
                     <MDButton variant="gradient" color="info" fullWidth>
-                      ADD NEW DEVICE
+                      ADD NEW Model
                     </MDButton>
                   </MDBox>
                 </MDBox>
@@ -65,33 +51,64 @@ function Device() {
           <Grid item xs={12} lg={8}>
             <Card>
               <MDBox p={2}>
-                <MDTypography variant="h5">Mount Location</MDTypography>
+                <MDTypography variant="h5">Configure Model to Sport</MDTypography>
               </MDBox>
               <MDBox pt={4} pb={3} px={3}>
                 <MDBox component="form" role="form">
                   <MDBox mb={2}>
                     <FormControl fullWidth>
                       <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                        Mount Location
+                        Sport
                       </InputLabel>
                       <NativeSelect
                         defaultValue={30}
                         inputProps={{
-                          name: "age",
+                          name: "sport",
                           id: "uncontrolled-native",
                         }}
                       >
-                        <option value={10}>Wrist</option>
-                        <option value={20}>Leg</option>
+                        <option value={10}>Cricket</option>
+                        <option value={20}>Badminton</option>
                       </NativeSelect>
                     </FormControl>
                   </MDBox>
                   <MDBox mb={2}>
-                    <MDInput type="number" label="Mounting order" variant="standard" fullWidth />
+                    <FormControl fullWidth>
+                      <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                        Model 1
+                      </InputLabel>
+                      <NativeSelect
+                        defaultValue={30}
+                        inputProps={{
+                          name: "model1",
+                          id: "uncontrolled-native",
+                        }}
+                      >
+                        <option value={10}>mod1</option>
+                        <option value={20}>mod2</option>
+                      </NativeSelect>
+                    </FormControl>
+                  </MDBox>
+                  <MDBox mb={2}>
+                    <FormControl fullWidth>
+                      <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                        Model 2
+                      </InputLabel>
+                      <NativeSelect
+                        defaultValue={30}
+                        inputProps={{
+                          name: "model1",
+                          id: "uncontrolled-native",
+                        }}
+                      >
+                        <option value={10}>mod1</option>
+                        <option value={20}>mod2</option>
+                      </NativeSelect>
+                    </FormControl>
                   </MDBox>
                   <MDBox mt={4} mb={1}>
                     <MDButton variant="gradient" color="info" fullWidth>
-                      ADD NEW MOUNTING LOCATION
+                      CONNECT MODEL TO SPORT
                     </MDButton>
                   </MDBox>
                 </MDBox>
@@ -105,4 +122,4 @@ function Device() {
   );
 }
 
-export default Device;
+export default Model;

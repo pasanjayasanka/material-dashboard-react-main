@@ -43,6 +43,8 @@ import Tables from "layouts/tables";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import Device from "layouts/device";
+import Sport from "layouts/sport";
+import Model from "layouts/model";
 // import SignIn from "layouts/authentication/sign-in";
 // import SignUp from "layouts/authentication/sign-up";
 
@@ -90,6 +92,22 @@ const routes = [
     icon: <Icon fontSize="small">person</Icon>,
     route: "/device",
     component: <Device />,
+  },
+  {
+    type: "collapse",
+    name: "Sport",
+    key: "sport",
+    icon: <Icon fontSize="small">person</Icon>,
+    route: "/sport",
+    component: <Sport />,
+  },
+  {
+    type: "collapse",
+    name: "Model",
+    key: "model",
+    icon: <Icon fontSize="small">person</Icon>,
+    route: "/model",
+    component: <Model />,
   },
   {
     type: "collapse",
