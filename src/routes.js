@@ -42,6 +42,7 @@ import Tables from "layouts/tables";
 // import RTL from "layouts/rtl";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
+import Device from "layouts/device";
 // import SignIn from "layouts/authentication/sign-in";
 // import SignUp from "layouts/authentication/sign-up";
 
@@ -81,6 +82,14 @@ const routes = [
     icon: <Icon fontSize="small">person</Icon>,
     route: "/profile",
     component: <Profile />,
+  },
+  {
+    type: "collapse",
+    name: "Device",
+    key: "device",
+    icon: <Icon fontSize="small">person</Icon>,
+    route: "/device",
+    component: <Device />,
   },
   {
     type: "collapse",
