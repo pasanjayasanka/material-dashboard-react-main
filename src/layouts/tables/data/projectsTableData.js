@@ -66,54 +66,81 @@ export default function data() {
       {
         project: (
           <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
-            10/07/2022
+            17/07/2022
           </MDTypography>
         ),
         budget: (
           <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
-            3h 25min
+            18 mins
           </MDTypography>
         ),
         status: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            2.4
+            1.22
           </MDTypography>
         ),
         completion: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            95 Pulse
+            68 Pulse
           </MDTypography>
         ),
         action: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            1.5
+            73
           </MDTypography>
         ),
       },
       {
         project: (
           <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
-            12/07/2022
+            16/07/2022
           </MDTypography>
         ),
         budget: (
           <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
-            2h 15min
+            22 mins
           </MDTypography>
         ),
         status: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            1.8
+            1.3
           </MDTypography>
         ),
         completion: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            113 Pulse
+            75 Pulse
           </MDTypography>
         ),
         action: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            0.8
+            65
+          </MDTypography>
+        ),
+      },
+      {
+        project: (
+          <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
+            15/07/2022
+          </MDTypography>
+        ),
+        budget: (
+          <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
+            30 mins
+          </MDTypography>
+        ),
+        status: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            1.2
+          </MDTypography>
+        ),
+        completion: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            78 Pulse
+          </MDTypography>
+        ),
+        action: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            70
           </MDTypography>
         ),
       },

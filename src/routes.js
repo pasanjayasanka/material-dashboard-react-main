@@ -47,6 +47,7 @@ import Profile from "layouts/profile";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
+import Basic from "layouts/authentication/sign-in";
 
 const routes = [
   {
@@ -80,6 +81,14 @@ const routes = [
     icon: <Icon fontSize="small">person</Icon>,
     route: "/profile",
     component: <Profile />,
+  },
+  {
+    type: "collapse",
+    name: "login",
+    key: "login",
+    icon: <Icon fontSize="small">Signin</Icon>,
+    route: "/login/basic",
+    component: <Basic />,
   },
 ];
 
