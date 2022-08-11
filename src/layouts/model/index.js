@@ -37,7 +37,7 @@ function Model() {
                     <MDInput type="text" label="Name" variant="standard" fullWidth />
                   </MDBox>
                   <MDBox mb={2}>
-                    <MDInput type="text" label="Name" variant="standard" fullWidth />
+                    <MDInput type="file" label="File" variant="standard" fullWidth />
                   </MDBox>
                   <MDBox mt={4} mb={1}>
                     <MDButton variant="gradient" color="info" fullWidth>

@@ -50,6 +50,8 @@ import Model from "layouts/model";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
+import SportsScoreIcon from "@mui/icons-material/SportsScore";
+import ModelTrainingIcon from "@mui/icons-material/ModelTraining";
 import Basic from "layouts/authentication/sign-in";
 
 const routes = [
@@ -89,7 +91,7 @@ const routes = [
     type: "collapse",
     name: "Device",
     key: "device",
-    icon: <Icon fontSize="small">person</Icon>,
+    icon: <Icon fontSize="small">aod</Icon>,
     route: "/device",
     component: <Device />,
   },
@@ -97,7 +99,7 @@ const routes = [
     type: "collapse",
     name: "Sport",
     key: "sport",
-    icon: <Icon fontSize="small">person</Icon>,
+    icon: <SportsScoreIcon fontSize="small">sport</SportsScoreIcon>,
     route: "/sport",
     component: <Sport />,
   },
@@ -105,7 +107,7 @@ const routes = [
     type: "collapse",
     name: "Model",
     key: "model",
-    icon: <Icon fontSize="small">person</Icon>,
+    icon: <ModelTrainingIcon fontSize="small">model</ModelTrainingIcon>,
     route: "/model",
     component: <Model />,
   },
