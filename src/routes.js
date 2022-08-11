@@ -86,8 +86,8 @@ const routes = [
     type: "collapse",
     name: "login",
     key: "login",
-    icon: <Icon fontSize="small">Login</Icon>,
-    route: "/login",
+    icon: <Icon fontSize="small">Signin</Icon>,
+    route: "/login/basic",
     component: <Basic />,
   },
 ];

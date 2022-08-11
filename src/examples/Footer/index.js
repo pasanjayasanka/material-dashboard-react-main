@@ -27,20 +27,21 @@ import MDTypography from "components/MDTypography";
 // Material Dashboard 2 React base styles
 import typography from "assets/theme/base/typography";
 
-function Footer({ company, links }) {
+// function Footer({ company, links }) {
+function Footer({ company }) {
   const { href, name } = company;
   const { size } = typography;
 
-  const renderLinks = () =>
-    links.map((link) => (
-      <MDBox key={link.name} component="li" px={2} lineHeight={1}>
-        <Link href={link.href} target="_blank">
-          <MDTypography variant="button" fontWeight="regular" color="text">
-            {link.name}
-          </MDTypography>
-        </Link>
-      </MDBox>
-    ));
+  // const renderLinks = () =>
+  //   links.map((link) => (
+  //     <MDBox key={link.name} component="li" px={2} lineHeight={1}>
+  //       <Link href={link.href} target="_blank">
+  //         <MDTypography variant="button" fontWeight="regular" color="text">
+  //           {link.name}
+  //         </MDTypography>
+  //       </Link>
+  //     </MDBox>
+  //   ));
 
   return (
     <MDBox
@@ -60,19 +61,19 @@ function Footer({ company, links }) {
         fontSize={size.sm}
         px={1.5}
       >
-        &copy; {new Date().getFullYear()}, made with
+        &copy; {new Date().getFullYear()}, training
         <MDBox fontSize={size.md} color="text" mb={-0.5} mx={0.25}>
           <Icon color="inherit" fontSize="inherit">
             favorite
           </Icon>
         </MDBox>
-        by
+        with
         <Link href={href} target="_blank">
           <MDTypography variant="button" fontWeight="medium">
             &nbsp;{name}&nbsp;
           </MDTypography>
         </Link>
-        for a better web.
+        for a better health.
       </MDBox>
       <MDBox
         component="ul"
@@ -91,7 +92,7 @@ function Footer({ company, links }) {
           },
         })}
       >
-        {renderLinks()}
+        {/* {renderLinks()} */}
       </MDBox>
     </MDBox>
   );
@@ -99,7 +100,8 @@ function Footer({ company, links }) {
 
 // Setting default values for the props of Footer
 Footer.defaultProps = {
-  company: { href: "https://www.creative-tim.com/", name: "Creative Tim" },
+  company: { href: "http://localhost:3000/dashboard", name: "Athlete Workload Management System" },
+  // eslint-disable-next-line react/default-props-match-prop-types
   links: [
     { href: "https://www.creative-tim.com/", name: "Creative Tim" },
     { href: "https://www.creative-tim.com/presentation", name: "About Us" },
@@ -111,7 +113,7 @@ Footer.defaultProps = {
 // Typechecking props for the Footer
 Footer.propTypes = {
   company: PropTypes.objectOf(PropTypes.string),
-  links: PropTypes.arrayOf(PropTypes.object),
+  // links: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Footer;
