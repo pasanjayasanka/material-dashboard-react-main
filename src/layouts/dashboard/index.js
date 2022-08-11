@@ -90,6 +90,11 @@ const calcTrimp = (i, user, acwrval, activity) => {
     const power = (1.92 * upperDiff) / range;
     const pv = Math.E ** power;
     const val = (time * upperDiff * 0.64 * pv) / range;
+    console.log(
+      `hrHigh${hrHigh}hrLow${hrLow}upperDiff${upperDiff}range${range}time${time}power${power}pv${pv}`
+    );
+    console.log("t");
+    console.log(val);
     return val;
   }
   return 0;
