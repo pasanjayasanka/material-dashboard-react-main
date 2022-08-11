@@ -39,7 +39,7 @@ import MDInput from "components/MDInput";
 import BasicLayout from "layouts/authentication/components/BasicLayout";
 
 // Images
-import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+import bgImage from "assets/images/cover-bg2.jpg";
 import MDButton from "../../../components/MDButton";
 
 function Basic() {

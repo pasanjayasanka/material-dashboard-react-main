@@ -53,6 +53,7 @@ import Icon from "@mui/material/Icon";
 import SportsScoreIcon from "@mui/icons-material/SportsScore";
 import ModelTrainingIcon from "@mui/icons-material/ModelTraining";
 import Basic from "layouts/authentication/sign-in";
+import Cover from "layouts/authentication/sign-up";
 
 const routes = [
   {
@@ -118,6 +119,14 @@ const routes = [
     icon: <Icon fontSize="small">Login</Icon>,
     route: "/login",
     component: <Basic />,
+  },
+  {
+    type: "collapse",
+    name: "signup",
+    key: "signup",
+    icon: <Icon fontSize="small">Signup</Icon>,
+    route: "/sign-up",
+    component: <Cover />,
   },
 ];
 
